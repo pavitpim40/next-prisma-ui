@@ -1,18 +1,31 @@
 import type { GetServerSideProps, NextPage } from 'next'
-
-interface User {
+import  Link  from 'next/link'
+export  interface User {
   id: number,
   username : string
   fname: string
   lname: string
   avatar: string
 }
+export  interface Pet {
+  id: number,
+  name : string
+  avatar: string
+}
+
+export interface Pet {
+
+}
 const Home: NextPage = ({data}:any) => {
   return (
     <div>
       <ul>
     {data.users.map((user:User) => (
-      <li>{user.fname} {user.lname}</li>
+      <li>{user.fname} {user.lname}
+        <Link href={`/user/${user.id}`}>
+          More...
+        </Link>
+      </li>
     ))}
     </ul>
     </div>
